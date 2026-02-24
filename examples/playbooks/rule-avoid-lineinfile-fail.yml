@@ -1,0 +1,15 @@
+---
+- name: Fixture for avoid-lineinfile (fail)
+  hosts: localhost
+  tasks:
+    - name: Modify config with lineinfile # <-- 1st
+      ansible.builtin.lineinfile:
+        path: /etc/myapp/app.conf
+        regexp: "^PORT="
+        line: "PORT=8080"
+
+    - name: Add sudoers entry # <-- 2nd
+      ansible.builtin.lineinfile:
+        path: /etc/sudoers
+        line: "ansible ALL=(ALL) NOPASSWD: ALL"
+        validate: /usr/sbin/visudo -cf %s

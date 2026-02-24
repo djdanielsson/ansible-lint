@@ -1,0 +1,15 @@
+---
+- name: Fixture for avoid-lineinfile (pass)
+  hosts: localhost
+  tasks:
+    - name: Deploy config with template
+      ansible.builtin.template:
+        src: app.conf.j2
+        dest: /etc/myapp/app.conf
+        mode: "0644"
+
+    - name: Copy a static file
+      ansible.builtin.copy:
+        src: motd.txt
+        dest: /etc/motd
+        mode: "0644"
