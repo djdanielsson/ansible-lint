@@ -1,0 +1,18 @@
+---
+- name: Fixture for set-fact-in-loop (fail)
+  hosts: localhost
+  vars:
+    large_list:
+      - name: item1
+      - name: item2
+      - name: item3
+  tasks:
+    - name: Build list with set_fact in loop # <-- 1st
+      ansible.builtin.set_fact:
+        my_list: "{{ my_list | default([]) + [item.name] }}"
+      loop: "{{ large_list }}"
+
+    - name: Build list with set_fact using with_items # <-- 2nd
+      ansible.builtin.set_fact:
+        my_list: "{{ my_list | default([]) + [item.name] }}"
+      with_items: "{{ large_list }}"

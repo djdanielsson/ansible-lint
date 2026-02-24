@@ -1,0 +1,16 @@
+---
+- name: Fixture for set-fact-in-loop (pass)
+  hosts: localhost
+  vars:
+    large_list:
+      - name: item1
+      - name: item2
+      - name: item3
+  tasks:
+    - name: Use filters instead of loop
+      ansible.builtin.set_fact:
+        my_list: "{{ large_list | map(attribute='name') | list }}"
+
+    - name: Set a simple fact
+      ansible.builtin.set_fact:
+        my_var: "hello"
