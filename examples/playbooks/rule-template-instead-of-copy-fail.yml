@@ -1,0 +1,21 @@
+---
+- name: Fixture for template-instead-of-copy (fail)
+  hosts: localhost
+  tasks:
+    - name: Copy config to /etc/ # <-- 1st
+      ansible.builtin.copy:
+        src: app.conf
+        dest: /etc/myapp/app.conf
+        mode: "0644"
+
+    - name: Copy a .yml config file # <-- 2nd
+      ansible.builtin.copy:
+        src: settings.yml
+        dest: /opt/app/settings.yml
+        mode: "0644"
+
+    - name: Copy a .properties file # <-- 3rd
+      ansible.builtin.copy:
+        src: app.properties
+        dest: /opt/app/app.properties
+        mode: "0644"

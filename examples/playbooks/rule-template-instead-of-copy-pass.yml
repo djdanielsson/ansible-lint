@@ -1,0 +1,21 @@
+---
+- name: Fixture for template-instead-of-copy (pass)
+  hosts: localhost
+  tasks:
+    - name: Copy a binary file
+      ansible.builtin.copy:
+        src: app.tar.gz
+        dest: /opt/app/app.tar.gz
+        mode: "0644"
+
+    - name: Copy a script
+      ansible.builtin.copy:
+        src: deploy.sh
+        dest: /usr/local/bin/deploy.sh
+        mode: "0755"
+
+    - name: Use template for config (correct)
+      ansible.builtin.template:
+        src: app.conf.j2
+        dest: /etc/myapp/app.conf
+        mode: "0644"
