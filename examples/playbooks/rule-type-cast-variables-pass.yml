@@ -1,0 +1,29 @@
+---
+- name: Fixture for type-cast-variables (pass)
+  hosts: localhost
+  tasks:
+    - name: Check version with int cast
+      ansible.builtin.debug:
+        msg: "New enough"
+      when: ansible_distribution_major_version | int >= 8
+
+    - name: Check port range with int cast
+      ansible.builtin.debug:
+        msg: "Valid port"
+      when: custom_port | int > 1024
+
+    - name: Multi-condition with cast
+      ansible.builtin.debug:
+        msg: "OK"
+      when:
+        - my_count | int <= 100
+
+    - name: String comparison (no numbers)
+      ansible.builtin.debug:
+        msg: "RedHat"
+      when: ansible_distribution == "RedHat"
+
+    - name: Boolean check (no numbers)
+      ansible.builtin.debug:
+        msg: "enabled"
+      when: feature_enabled | bool

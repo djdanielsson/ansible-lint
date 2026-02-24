@@ -1,0 +1,19 @@
+---
+- name: Fixture for type-cast-variables (fail)
+  hosts: localhost
+  tasks:
+    - name: Check version without cast # <-- 1st
+      ansible.builtin.debug:
+        msg: "New enough"
+      when: ansible_distribution_major_version >= 8
+
+    - name: Check port range without cast # <-- 2nd
+      ansible.builtin.debug:
+        msg: "Valid port"
+      when: custom_port > 1024
+
+    - name: Multi-condition without cast # <-- 3rd
+      ansible.builtin.debug:
+        msg: "OK"
+      when:
+        - my_count <= 100
