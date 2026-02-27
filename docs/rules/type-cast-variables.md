@@ -1,0 +1,1 @@
+../../src/ansiblelint/rules/type_cast_variables.md
