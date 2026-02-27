@@ -120,6 +120,7 @@ nav:
       - rules/run-once.md
       - rules/sanity.md
       - rules/schema.md
+      - rules/set-fact-in-loop.md
       - rules/syntax-check.md
       - rules/var-naming.md
       - rules/warning.md
