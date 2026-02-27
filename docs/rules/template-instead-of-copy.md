@@ -1,0 +1,1 @@
+../../src/ansiblelint/rules/template_instead_of_copy.md
