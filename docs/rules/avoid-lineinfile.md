@@ -1,0 +1,1 @@
+../../src/ansiblelint/rules/avoid_lineinfile.md
