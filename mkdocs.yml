@@ -121,6 +121,7 @@ nav:
       - rules/sanity.md
       - rules/schema.md
       - rules/syntax-check.md
+      - rules/type-cast-variables.md
       - rules/var-naming.md
       - rules/warning.md
       - rules/yaml.md
