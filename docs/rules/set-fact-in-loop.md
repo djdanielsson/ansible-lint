@@ -1,0 +1,1 @@
+../../src/ansiblelint/rules/set_fact_in_loop.md
